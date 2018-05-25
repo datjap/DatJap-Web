@@ -1,0 +1,48 @@
+03/26/2018 03:37:06 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => '',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 03:37:46 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => '',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 03:38:20 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'hey dude',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 03:38:34 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'testing',
+ 	  'type' => 'Add',
+ 	)
+03/26/2018 03:56:33 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'a',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 03:58:11 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'a',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 03:58:38 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'a',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 04:03:58 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [4] 
+ 	array (
+ 	  'search' => 'a',
+ 	  'type' => 'Friends',
+ 	)
+03/26/2018 04:03:58 amUTC | /Applications/XAMPP/xamppfiles/htdocs/api/usersearch.php [13] 
+ 	mysqli_result::__set_state(array(
+ 	   'current_field' => NULL,
+ 	   'field_count' => NULL,
+ 	   'lengths' => NULL,
+ 	   'num_rows' => NULL,
+ 	   'type' => NULL,
+ 	))

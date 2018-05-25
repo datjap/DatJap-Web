@@ -1,0 +1,80 @@
+<div class="friend-box online">
+  <div class="friend-image"></div>
+  <div class="friend-name">
+    Tim McGraw
+  </div>
+  <div class="friend-username">
+    @timm
+  </div>
+  <div class="friend-mutual">
+    Mutual friends: 3
+  </div>
+  <div class="friend-dropdown">
+    <div class="button view-profile">
+      View Profile
+    </div>
+    <div class="button friend-action">
+      Remove Friend
+    </div>
+  </div>
+</div>
+<div class="friend-box">
+  <div class="friend-image"></div>
+  <div class="friend-name">
+    Thomas Rhett
+  </div>
+  <div class="friend-username">
+    @trhett
+  </div>
+  <div class="friend-mutual">
+    Mutual friends: 3
+  </div>
+  <div class="friend-dropdown">
+    <div class="button view-profile">
+      View Profile
+    </div>
+    <div class="button friend-action">
+      Remove Friend
+    </div>
+  </div>
+</div>
+<div class="friend-box">
+  <div class="friend-image"></div>
+  <div class="friend-name">
+    Jason Aldean
+  </div>
+  <div class="friend-username">
+    @jasona
+  </div>
+  <div class="friend-mutual">
+    Mutual friends: 3
+  </div>
+  <div class="friend-dropdown">
+    <div class="button view-profile">
+      View Profile
+    </div>
+    <div class="button friend-action">
+      Remove Friend
+    </div>
+  </div>
+</div>
+<div class="friend-box">
+  <div class="friend-image"></div>
+  <div class="friend-name">
+    Wheeler Walker Jr.
+  </div>
+  <div class="friend-username">
+    @wwjr
+  </div>
+  <div class="friend-mutual">
+    Mutual friends: 3
+  </div>
+  <div class="friend-dropdown">
+    <div class="button view-profile">
+      View Profile
+    </div>
+    <div class="button friend-action">
+      Remove Friend
+    </div>
+  </div>
+</div>
