@@ -38,7 +38,7 @@ load(function() {
 function loadFriendScreen() {
     console.log(personalData);
     if (type == "Friends") {
-        $(".friend-wrapper").html("");
+        $(".friend-wrapper").html(createFriendItems(personalData.friends, "End Request"));
     } else if (type == "Add") {
         $(".friend-wrapper").html("");
     } else if (type == "Pending") {

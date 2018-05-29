@@ -2,7 +2,8 @@
 enforceHttps();
 session_start();
 
-
+error_reporting(E_ALL);
+ini_set("display_errors", "On");
 
 class User{
   var $id;
@@ -37,6 +38,18 @@ class User{
 
   function getOnline() {
 
+  }
+
+  function getFriendStates() {
+    db();
+    $statement = "SELECT * FROM friends WHERE user1 LIKE $this->id OR user2 LIKE $this->id AND ?";
+    $types = "i";
+    $result = dbPrepare($statement, $types, 1);
+
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      logger(varToString($row));
+    }
   }
 
   function getFriends() {

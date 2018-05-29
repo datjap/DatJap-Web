@@ -180,12 +180,17 @@ function pageInit(){
           HELLO
           <?php
             echo "test";
-            if (isset($_SESSION['user']) && count($_SESSION['user']->getFriends()) > 0) {
-              echo $_SESSION['user']->getFriends();
-            } else {
-              ?>
-                <span class="nofriends">You have no friends *dab*</span>
-              <?php
+            
+            if (isset($_SESSION['user'])) {
+              $_SESSION['user']->getFriendStates();
+              if (count($_SESSION['user']->getFriends()) > 0) {
+                echo $_SESSION['user']->getFriends();
+              } else {
+                
+                ?>
+                  <span class="nofriends">You have no friends *dab*</span>
+                <?php
+              }
             }
            ?>
         </div>
