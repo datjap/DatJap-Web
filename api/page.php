@@ -132,9 +132,6 @@ function pageInit(){
       <a class="clean">
         <div class="friend sidebar-item"><div class="friend-img"></div><span class="friend-name">Tim McGraw</span></div>
       </a>
-      <div class="positionfix2">
-
-      </div>
     </div>
     <div class="noti-bar">
       <?php
