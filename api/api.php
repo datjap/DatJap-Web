@@ -41,15 +41,59 @@ class User{
   }
 
   function getFriendStates() {
+    $pending = array();
+    $pendingUser = array();
+    $denied = array();
+    $deniedUser = array();
+    $accepted = array();
+    $acceptedUser = array();
+    $friends = array(); // accepted and acceptedUser combined
+
     db();
-    $statement = "SELECT * FROM friends WHERE user1 LIKE $this->id OR user2 LIKE $this->id AND ?";
+    $statement = "SELECT * FROM friends WHERE user1 LIKE $this->id AND ?";
     $types = "i";
     $result = dbPrepare($statement, $types, 1);
 
     if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      logger(varToString($row));
+      while($row = $result->fetch_assoc()) {
+        $receiver = User::getUserById($row['user2']);
+        switch ($row['state']) {
+          case 0://pending
+            array_push($pending, $receiver);
+          case 1://deniedUser
+            array_push($deniedUser, $receiver);
+          case 2://acceptedUser / friends
+            array_push($acceptedUser, $receiver);
+        }
+      }
     }
+
+    $statement = "SELECT * FROM friends WHERE user2 LIKE $this->id AND ?";
+    $types = "i";
+    $result = dbPrepare($statement, $types, 1);
+    
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+        $sender = User::getUserById($row['user1']);
+        switch ($row['state']) {
+          case 0://pendingUser
+            array_push($pending, $sender);
+          case 1://denied
+            array_push($deniedUser, $sender);
+          case 2://accepted / friends
+            array_push($acceptedUser, $sender);
+        }
+      }
+    }
+    return (object) [
+      'pending' => $pending,
+      'pendingUser' => $pendingUser,
+      'denied' => $denied,
+      'deniedUser' => $deniedUser,
+      'accepted' => $accepted,
+      'acceptedUser' => $acceptedUser,
+      'friends' => $friends
+    ];
   }
 
   function getFriends() {
@@ -160,7 +204,11 @@ function varToString($input) {
   return(var_export($input, true));
 }
 
-function logger($input) {
+function logger($input, $varOutput) {
+  if ($varOutput) {
+    $input = varToString($input);
+  }
+
   $myfile = fopen("./logger.txt", "a+") or die("Unable to open file!");
   $dbgt=debug_backtrace();
   $date = date('m/d/Y h:i:s a', time());
@@ -168,6 +216,8 @@ function logger($input) {
   $txt = $date . "UTC | " . $dbgt[0]['file'] . " [" . $dbgt[0]['line'] . "] \n \t" . $input . "\n";
   fwrite($myfile, $txt);
   fclose($myfile);
+
+  return $txt;
 }
 
 function enforceHttps(){
