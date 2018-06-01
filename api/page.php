@@ -174,19 +174,7 @@ function pageInit(){
       </div>
       <div class="friend-content">
         <div class="friend-wrapper">
-          <?php
-            if (isset($_SESSION['user'])) {
-              $_SESSION['user']->getFriendStates();
-              if (count($_SESSION['user']->getFriends()) > 0) {
-                echo $_SESSION['user']->getFriends();
-              } else {
-                
-                ?>
-                  <span class="nofriends">You have no friends *dab*</span>
-                <?php
-              }
-            }
-           ?>
+         
         </div>
       </div>
     </div>

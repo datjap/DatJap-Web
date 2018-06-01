@@ -56,14 +56,17 @@ class User{
 
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-        $receiver = User::getUserById($row['user2']);
+        $receiver = User::getUserById($row['user2'])->getPublicData();
         switch ($row['state']) {
           case 0://pending
             array_push($pending, $receiver);
+            break;
           case 1://deniedUser
             array_push($deniedUser, $receiver);
+            break;
           case 2://acceptedUser / friends
             array_push($acceptedUser, $receiver);
+            break;
         }
       }
     }
@@ -74,14 +77,17 @@ class User{
     
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-        $sender = User::getUserById($row['user1']);
+        $sender = User::getUserById($row['user1'])->getPublicData();
         switch ($row['state']) {
           case 0://pendingUser
             array_push($pending, $sender);
+            break;
           case 1://denied
             array_push($deniedUser, $sender);
+            break;
           case 2://accepted / friends
             array_push($acceptedUser, $sender);
+            break;
         }
       }
     }
@@ -94,18 +100,6 @@ class User{
       'acceptedUser' => $acceptedUser,
       'friends' => $friends
     ];
-  }
-
-  function getFriends() {
-    return array();
-  }
-
-  function getPending() {
-    return array();
-  }
-
-  function getRequests() {
-    return array();
   }
 
   function getBlocked() {
@@ -139,16 +133,17 @@ class User{
     echo $json;
   }
 
-  function getPublicJSON() {
-    $object = (object) [
+  function getPublicData() {
+    return (object) [
       'username' => $this->username,
       'displayName' => $this->displayName,
       'priv' => $this->priv,
-      'friends' => $this->getFriends(),
     ];
+  }
 
-    $json = json_encode($object);
-    echo $json;
+  function getPublicJSON() {
+    $json = json_encode($this->getPublicData());
+    return $json;
   }
 
   public static function getUserByRowData($row) {
