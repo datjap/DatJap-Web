@@ -57,7 +57,7 @@ class User{
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
         $receiver = User::getUserById($row['user2'])->getPublicData();
-        switch ($row['state']) {
+        switch ($row['type']) {
           case 0://pending
             array_push($pending, $receiver);
             break;
@@ -78,7 +78,7 @@ class User{
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
         $sender = User::getUserById($row['user1'])->getPublicData();
-        switch ($row['state']) {
+        switch ($row['type']) {
           case 0://pendingUser
             array_push($pending, $sender);
             break;
@@ -121,9 +121,7 @@ class User{
       'displayName' => $this->displayName,
       'priv' => $this->priv,
       'emailVerified' => $this->emailVerified,
-      'friends' => $this->getFriends(),
-      'pending' => $this->getPending(),
-      'requests' => $this->getRequests(),
+      'friends' => $this->getFriendStates(),
       'blocked' => $this->getBlocked(),
     ];
 
@@ -252,7 +250,7 @@ function imports($title) {
         <?php
       } else {
         ?>
-          null;
+            echo 'null';
         <?php
       }
     ?>
